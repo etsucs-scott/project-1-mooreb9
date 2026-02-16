@@ -1,13 +1,19 @@
-﻿namespace AdventureGame.Core
+﻿using System;
+
+namespace AdventureGame.Core
 {
     public class Weapon : Item
     {
         public int AttackModifier { get; }
 
-        public Weapon(string name, int modifier)
-            : base(name, $"You picked up {name} (+{modifier} attack)!")
+        public Weapon(int WeaponDamage) : base()
         {
-            AttackModifier = modifier;
+            AttackModifier = WeaponDamage;
+        }
+
+        public override void Apply(Player player)
+        {
+            player.AddWeapon(this);
         }
     }
 }

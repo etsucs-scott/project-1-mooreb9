@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventureGame.Core
+﻿namespace AdventureGame.Core
 {
     public class Potion : Item
     {
-        public int healthBoost = 20;
+        private const int HealAmount = 20;
 
-        public Potion() 
-        : base("potion", "You gain 20 HP!") { }
+        public Potion() : base()
+        {
+        }
+
+        public override void Apply(Player player)
+        {
+            player.Heal(HealAmount);
+        }
     }
 }
+

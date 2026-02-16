@@ -11,20 +11,23 @@
 
         public List<Weapon> Inventory { get; } = new();
 
-        public int Attack(int damage)
+        public int Attack()
         {
             int bestModifier = Inventory.Any()
                 ? Inventory.Max(w => w.AttackModifier)
                 : 0;
 
             // I used ChatGPT 5.2 to pull the max attack modifier from the inventory list 
-            // (Gillenwater did not go over lists in my section of 1250, so this is my first time using them)
 
             return BaseDamage + bestModifier;
         }
         public void TakeDamage(int damage)
         {
             Health -= damage;
+            if (Health < 0)
+            {
+                Health = 0;
+            }
         }
 
         public void Heal(int amount)
@@ -34,6 +37,11 @@
             {
                 Health = MaxHealth;
             }
+        }
+
+        public void AddWeapon(Weapon weapon)
+        {
+            Inventory.Add(weapon);
         }
     }
 }
