@@ -22,3 +22,6 @@
 ## Objective
 - Your only goal is to reach the exit. 
 
+## How to Build and Run
+- Open the solution folder, build, and run AdventureGame.Cli
+
